@@ -2,11 +2,18 @@ import React, { useState } from "react";
 import "./PixelGrid.css"; // Import the CSS file for styling
 import { Color } from "../../types/colors";
 import { convertColorToCSSColor } from "../../utils/conversions";
+import { Size } from "../../types/grid";
 
-const PixelGrid = ({ selectedColor }: { selectedColor: Color }) => {
-  const initialGridState = new Array(16)
+const PixelGrid = ({
+  selectedColor,
+  size,
+}: {
+  selectedColor: Color;
+  size: Size;
+}) => {
+  const initialGridState = new Array(size.width)
     .fill(null)
-    .map(() => new Array(16).fill("rgb(0,0,0)"));
+    .map(() => new Array(size.height).fill("rgb(0,0,0)"));
   const [grid, setGrid] = useState(initialGridState);
   const [isMouseDown, setIsMouseDown] = useState(false);
 
@@ -36,7 +43,9 @@ const PixelGrid = ({ selectedColor }: { selectedColor: Color }) => {
               key={`${rowIndex}-${colIndex}`}
               className="cell"
               style={{ backgroundColor: color }}
-              onMouseOver={() => isMouseDown && toggleCellColor(rowIndex, colIndex)}
+              onMouseOver={() =>
+                isMouseDown && toggleCellColor(rowIndex, colIndex)
+              }
               onMouseDown={() => {
                 setIsMouseDown(true);
                 toggleCellColor(rowIndex, colIndex);

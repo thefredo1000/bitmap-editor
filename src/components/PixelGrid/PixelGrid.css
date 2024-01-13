@@ -10,8 +10,8 @@
 }
 
 .cell {
-  width: 30px; /* Width of each cell */
-  height: 30px; /* Height of each cell */
+  width: 8px; /* Width of each cell */
+  height: 8px; /* Height of each cell */
   border: 0px solid black; /* Border for the cells */
   cursor: pointer; /* Cursor changes to pointer to indicate clickable area */
 }
