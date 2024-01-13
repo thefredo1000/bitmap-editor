@@ -26,7 +26,12 @@ export default function Editor() {
           variant="flushed"
           placeholder="width (px)"
           onChange={(event) => {
-            setSize({ ...size, width: parseInt(event.target.value) ?? 0 });
+            setSize({
+              ...size,
+              width: isNaN(parseInt(event.target.value))
+                ? 4
+                : parseInt(event.target.value),
+            });
           }}
           defaultValue={size.width.toString()}
         />
@@ -34,7 +39,12 @@ export default function Editor() {
           variant="flushed"
           placeholder="heigth (px)"
           onChange={(event) => {
-            setSize({ ...size, height: parseInt(event.target.value) ?? 0 });
+            setSize({
+              ...size,
+              height: isNaN(parseInt(event.target.value))
+                ? 4
+                : parseInt(event.target.value),
+            });
           }}
           defaultValue={size.height.toString()}
         />
