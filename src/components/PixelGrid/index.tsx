@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./PixelGrid.css"; // Import the CSS file for styling
 import { Color } from "../../types/colors";
 import { convertColorToCSSColor } from "../../utils/conversions";
@@ -11,11 +11,24 @@ const PixelGrid = ({
   selectedColor: Color;
   size: Size;
 }) => {
-  const initialGridState = new Array(size.width)
-    .fill(null)
-    .map(() => new Array(size.height).fill("rgb(0,0,0)"));
-  const [grid, setGrid] = useState(initialGridState);
+  console.log(size);
+  const [grid, setGrid] = useState(
+    new Array(size.width ?? 4)
+      .fill(null)
+      .map(() => new Array(size.height ?? 4).fill("rgb(0,0,0)"))
+  );
+
   const [isMouseDown, setIsMouseDown] = useState(false);
+
+  useEffect(() => {
+    setGrid(
+      new Array(size.width)
+        .fill(null)
+        .map(() =>
+          new Array(size.height).fill(convertColorToCSSColor(selectedColor))
+        )
+    );
+  }, [size]);
 
   // Function to toggle cell color
   const toggleCellColor = (row: number, col: number) => {
