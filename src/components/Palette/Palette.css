@@ -1,0 +1,23 @@
+.color {
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: transform 1s;
+}
+
+.selected {
+  transform: scale(1.25);
+  border: 2px solid black;
+}
+
+.palette {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  background-color: gray;
+  border-radius: 6px;
+}
