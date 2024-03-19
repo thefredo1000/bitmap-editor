@@ -1,8 +1,11 @@
 .grid {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: start;
+  border: 1px solid black; /* Border for the grid */
+  background-color: gray;
+  min-height: 200px; /* Minimum height of the grid */
 }
 
 .row {
